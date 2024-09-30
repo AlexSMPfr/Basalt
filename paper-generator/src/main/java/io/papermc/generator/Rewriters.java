@@ -7,6 +7,7 @@ import io.papermc.generator.rewriter.types.Types;
 import io.papermc.generator.rewriter.types.registry.EnumRegistryRewriter;
 import io.papermc.generator.rewriter.types.registry.FeatureFlagRewriter;
 import io.papermc.generator.rewriter.types.registry.RegistryFieldRewriter;
+import io.papermc.generator.rewriter.types.registry.RegistryTagRewriter;
 import io.papermc.generator.rewriter.types.registry.TagRewriter;
 import io.papermc.generator.rewriter.types.simple.BlockTypeRewriter;
 import io.papermc.generator.rewriter.types.simple.CraftBlockDataMapping;
@@ -20,6 +21,7 @@ import io.papermc.generator.rewriter.types.simple.MemoryKeyRewriter;
 import io.papermc.generator.rewriter.types.simple.StatisticRewriter;
 import io.papermc.generator.rewriter.types.simple.VillagerProfessionRewriter;
 import io.papermc.generator.utils.Formatting;
+import io.papermc.typewriter.ClassNamed;
 import io.papermc.typewriter.preset.EnumCloneRewriter;
 import io.papermc.typewriter.preset.model.EnumValue;
 import java.util.Locale;
@@ -172,6 +174,7 @@ public final class Rewriters {
             .register("TrimPattern", TrimPattern.class, new RegistryFieldRewriter<>(Registries.TRIM_PATTERN, "getTrimPattern"))
             .register("TrimMaterial", TrimMaterial.class, new RegistryFieldRewriter<>(Registries.TRIM_MATERIAL, "getTrimMaterial"))
             .register("DamageType", DamageType.class, new RegistryFieldRewriter<>(Registries.DAMAGE_TYPE, "getDamageType"))
+            .register("DamageTypeTags", ClassNamed.of("org.bukkit.tag", "DamageTypeTags"), new RegistryTagRewriter<>(Registries.DAMAGE_TYPE, DamageType.class))
             .register("GameEvent", GameEvent.class, new RegistryFieldRewriter<>(Registries.GAME_EVENT, "getEvent"))
             .register("MusicInstrument", MusicInstrument.class, new RegistryFieldRewriter<>(Registries.INSTRUMENT, "getInstrument"))
             .register("WolfVariant", Wolf.Variant.class, new RegistryFieldRewriter<>(Registries.WOLF_VARIANT, "getVariant"))

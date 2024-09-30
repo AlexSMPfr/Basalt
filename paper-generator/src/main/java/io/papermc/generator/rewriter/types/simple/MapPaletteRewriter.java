@@ -15,7 +15,7 @@ public class MapPaletteRewriter extends SearchReplaceRewriter {
                 continue;
             }
 
-            for (MapColor. Brightness brightness : MapColor.Brightness.values()) {
+            for (MapColor.Brightness brightness : MapColor.Brightness.values()) {
                 builder.append(metadata.indent());
                 Color color = fromABGR(mapColor.calculateRGBColor(brightness)); // int is encoded as 0xFF << 24 | blue << 16 | green << 8 | red (BGR and not RGB)
                 if (color.getAlpha() != 0xFF) {
